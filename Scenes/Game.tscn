@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cjhq0i7rsnxer"]
+[gd_scene load_steps=23 format=3 uid="uid://cjvrj13iafbtn"]
 
 [ext_resource type="Texture2D" uid="uid://cadufcmh1rak0" path="res://Assets/Terrain/tileset x1.png" id="1_nyurr"]
 [ext_resource type="PackedScene" uid="uid://b5qjgk6x5tlbn" path="res://Scenes/Player.tscn" id="3_1e41n"]
@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://dqcsrag74lt8j" path="res://Assets/Sprout Lands - Sprites - Basic pack/Tilesets/Hills.png" id="5_8m1kn"]
 [ext_resource type="PackedScene" uid="uid://bvduf8mvjoqfx" path="res://Scenes/caixa.tscn" id="11_aiuk6"]
 [ext_resource type="Texture2D" uid="uid://dqld6mjo58wwf" path="res://Assets/pixilart-drawing (4).png" id="11_vmp13"]
-[ext_resource type="Texture2D" uid="uid://b5sv2tk13jqe7" path="res://Assets/Terrain/light.png" id="12_5cgy5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2ndar"]
 texture = ExtResource("1_nyurr")
@@ -3828,9 +3827,6 @@ _data = {
 "RESET": SubResource("Animation_jffqa")
 }
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_g6avk"]
-polygon = PackedVector2Array(-51.9737, 37.963, -10.5263, 37.963, -10.5263, 49.537, 10.8553, 49.537, 10.8553, 37.963, 52.3026, 37.963, 52.3026, 49.0741, -51.9737, 49.537)
-
 [node name="Game" type="Node2D"]
 
 [node name="TileMapa" type="TileMap" parent="."]
@@ -3888,14 +3884,3 @@ z_index = 1
 position = Vector2(216, -203)
 scale = Vector2(1.25, 1.1875)
 texture = ExtResource("11_vmp13")
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(141, -116)
-scale = Vector2(3.04, 2.16)
-color = Color(0.500003, 0.500003, 1.92523e-07, 1)
-energy = 0.63
-texture = ExtResource("12_5cgy5")
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="PointLight2D"]
-position = Vector2(0.328942, -13.4259)
-occluder = SubResource("OccluderPolygon2D_g6avk")

@@ -1,14 +1,12 @@
 extends StaticBody2D
 
 var PC = PackedScene
+@onready var player = $"../Player"
 
 func _ready():
-	pass
-	#var player = get_node("/root/Path/To/Player")
-	#player.connect("abriuPc", ligarPc)
-	#PC = load("res://Scenes/computador.tscn")
+	player.connect("abriuPc", ligarPc)
+	PC = preload("res://Scenes/PcAberto.tscn")
 
 func ligarPc():
-	pass
-	#var PC_instance = PC.instance()
-	#add_child(PC_instance)
+	get_tree().change_scene_to_packed(PC)
+

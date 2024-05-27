@@ -1,51 +1,34 @@
-#extends Control
-#
-#var time = 0.0
-#const TIME_SCALE = 0.1
-#@onready var progress_bar = $TextureProgressBar
-#
-#func _ready():
-	#time = 0.0
-#
-#func _process(delta):
-	#time += delta * TIME_SCALE
-	#progress_bar.value += 1 * delta * TIME_SCALE
-	#if progress_bar.value > progress_bar.max_value:
-		#progress_bar.value = progress_bar.max_value
-#
-#func reset_progress():
-	#progress_bar.value = 0
-#
-#func set_progress(value):
-	#progress_bar.value = value
-	
 extends Control
 
-const TIME_SCALE = 0.1
-
+@export var duration: float = 1  # Tempo de duração em segundos
 @onready var progress_bar = $TextureProgressBar
+@onready var timer = $Timer
 
-var time = 0.0
+var elapsed_time = 0.0
 
 func _ready():
-	# Inicializando o valor do tempo
-	time = 0.0
+	hide()
+	reset_progress()
+	timer.connect("timeout", Callable(self, "_on_timer_timeout"))
 
 func _process(delta):
-	# Incrementando o tempo com base no delta e no TIME_SCALE
-	time += delta * TIME_SCALE
-	
-	# Incrementando o valor da progress bar
-	progress_bar.value += 1 * delta * TIME_SCALE
-	
-	# Garantindo que o valor não ultrapasse o valor máximo
-	if progress_bar.value > progress_bar.max_value:
-		progress_bar.value = progress_bar.max_value
+	if elapsed_time < duration:
+		elapsed_time += delta
+		progress_bar.value = (elapsed_time / duration) * progress_bar.max_value
 
-# Função para redefinir o progresso, se necessário
+func start_progress():
+	reset_progress()
+	elapsed_time = 0.0
+	timer.start(duration)
+
+func _on_timer_timeout():
+	# Finaliza o progresso quando o tempo do timer acabar
+	progress_bar.value = progress_bar.max_value
+	timer.stop()
+
 func reset_progress():
 	progress_bar.value = 0
+	elapsed_time = 0.0
 
-# Função para definir o progresso para um valor específico, se necessário
 func set_progress(value):
 	progress_bar.value = value

@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://d3ot8wqkbqiak"]
+[gd_scene load_steps=2 format=3 uid="uid://d3ot8wqkbqiak"]
+
+[ext_resource type="Script" path="res://Scenes/PcAberto.gd" id="1_oioku"]
 
 [node name="compNode" type="Control"]
 layout_mode = 3
@@ -11,6 +13,7 @@ offset_right = 57.0
 offset_bottom = 89.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_oioku")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0

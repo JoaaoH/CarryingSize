@@ -1,10 +1,12 @@
 extends CharacterBody2D
 
-
+signal abriuPc
+@onready var Comp = $"../Computador"
 @onready var caixa = $"../Caixa"
 @onready var caixacol = $CollisionPolygon2D
 @onready var Ray = $RayCast2D
 @onready var sprite = $AnimatedSprite2D
+@onready var progress = $Bagh
 @onready var player_rotation
 @onready var offset
 var Carrying = false
@@ -21,7 +23,8 @@ var max_distance = 50
 var distance_from_player = 32
 var timer
 var total_steps = 100
-@onready var Comp
+
+
 #signal animation_finished
 
 func _ready():
@@ -54,11 +57,9 @@ func _physics_process(delta):
 	
 	direction = Vector2(direction_x, direction_y).normalized()
 	
-	#signal abriuPc
-	#Comp = $"../Computador"
-	#if Input.is_action_just_pressed("teclaE") and Ray.get_collider() == Comp:
-		#emit_signal("abriuPc")
-	#print(Ray.get_collider())
+	if Input.is_action_just_pressed("teclaE") and Ray.get_collider() == Comp:
+		emit_signal("abriuPc")
+	print(Ray.get_collider())
 	
 	
 	#---------------------ANIMAÇÃO_E_ATAQUE-----------------------------------
@@ -137,17 +138,21 @@ func _input(event):
 				caixa.position = mouse_position
 				Carrying = false
 				caixa.visible = true
+				progress.hide()
 			else:
 				var ray_direction = (mouse_position - global_position).normalized()
 				caixa.position = global_position + ray_direction * max_distance
 				caixa.visible = true
 				Carrying = false
+				progress.hide()
 		else:
-			# Verificar se o RayCast está colidindo com a caixa e se está dentro do raio máximo
 			if Ray.is_colliding() and Ray.get_collider() == caixa and distance_to_mouse <= max_distance:
+				progress.show()
+				progress.start_progress()
 				timer.start()
 
 func _on_Timer_timeout():
+	progress.hide()
 	caixa.visible = false
 	caixa.position = Vector2(10000, 10000)
 	Carrying = true
