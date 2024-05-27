@@ -3876,6 +3876,7 @@ z_index = 1
 position = Vector2(260, -197)
 
 [node name="Caixa" parent="." instance=ExtResource("11_aiuk6")]
+z_index = 2
 position = Vector2(189, -105)
 
 [node name="Pixilart-drawing(4)" type="Sprite2D" parent="."]

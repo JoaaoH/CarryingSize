@@ -1,8 +1,6 @@
 extends CharacterBody2D
 
-signal abriuPc
-@onready var Comp = $"../Computador"
-@onready var relative_offset: Vector2
+
 @onready var caixa = $"../Caixa"
 @onready var caixacol = $CollisionPolygon2D
 @onready var Ray = $RayCast2D
@@ -16,13 +14,24 @@ var running_speed = 300
 var walking_speed = 175
 var attacked = false
 var lastver = 0  
-
+var ray_direction
+var mouse_position
+var box_position
+var max_distance = 50
+var distance_from_player = 32
+var timer
+var total_steps = 100
 
 #signal animation_finished
 
 func _ready():
-	pass
-	#$Button.connect("pressed",	Callable(self, "_on_Button_pressed"))
+	 # Obtendo a referência para o nó Timer
+	timer = $Timer
+	# Conectando o sinal 'timeout' do Timer à função _on_Timer_timeout
+	timer.connect("timeout", Callable(self, "_on_Timer_timeout"))
+	# Configurando o tempo de espera do Timer para 1 segundo (1000 milissegundos)
+	timer.wait_time = 1
+	# Iniciando o Timer
 
 func _process(delta):
 	pass
@@ -72,41 +81,22 @@ func _physics_process(delta):
 		lastver = -1
 	
 	
-	#if Input.is_action_just_pressed("mouse1") and !attacked:
-		#if direction.x == 0 and direction.y == 0:
-			#if cima == true:
-				#sprite.play("Attacking_Down")
-				#attacked = true
-				#cima = null
-			#elif cima == false:
-				#sprite.play("Attacking_Up")
-				#attacked = true
-				#cima = null
-			#elif sprite.flip_h or !sprite.flip_h:
-				#sprite.play("Attacking_Sides")
-				#attacked = true
-		#print("Iniciando animação de ataque")
-	
-	#---------------------PEGAR_ITEMS-----------------------------------------
+
 	
 	if direction.x != 0:
 		Ray.rotation_degrees = 0 if direction.x > 0 else 180
 	elif direction.y != 0:	
 		Ray.rotation_degrees = 90 if direction.y > 0 else 270
+	
+	
+	
+	
+	
+
+	
+	if Carrying:
+		speed = 100
 		
-	if Carrying == true and acao:
-		caixa.visible = true
-		player_rotation = self.rotation
-		offset = relative_offset.rotated(player_rotation)
-		caixa.position = self.position + offset
-		Carrying = false
-	if Ray.get_collider() == caixa and acao:
-		caixa.visible = false
-		caixa.position = Vector2(10000,10000)
-		Carrying = true
-		add_child(caixa)
-	
-	
 	#---------------------VIRAR_SPRITE----------------------------------------
 	if direction.x>0:
 		sprite.flip_h = true
@@ -136,3 +126,31 @@ func _physics_process(delta):
 #func _on_sprite_animation_finished():
 	#print("Animação do sprite finalizada")
 	#emit_signal("animation_finished") 
+func _input(event):
+	if event.is_action_pressed("mouse1"):
+		var mouse_position = get_global_mouse_position()
+		var distance_to_mouse = global_position.distance_to(mouse_position)
+		
+		if Carrying:
+			# Soltar a caixa no local do mouse, limitado ao raio máximo
+			if distance_to_mouse <= max_distance:
+				caixa.position = mouse_position
+				Carrying = false
+				caixa.visible = true
+			else:
+				var ray_direction = (mouse_position - global_position).normalized()
+				caixa.position = global_position + ray_direction * max_distance
+				caixa.visible = true
+				Carrying = false
+		else:
+			# Verificar se o RayCast está colidindo com a caixa e se está dentro do raio máximo
+			if Ray.is_colliding() and Ray.get_collider() == caixa and distance_to_mouse <= max_distance:
+				timer.start()
+
+func _on_Timer_timeout():
+	caixa.visible = false
+	caixa.position = Vector2(10000, 10000)
+	Carrying = true
+	
+
+
