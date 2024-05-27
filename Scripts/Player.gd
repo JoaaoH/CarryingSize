@@ -21,7 +21,7 @@ var max_distance = 50
 var distance_from_player = 32
 var timer
 var total_steps = 100
-
+@onready var Comp
 #signal animation_finished
 
 func _ready():
@@ -55,10 +55,10 @@ func _physics_process(delta):
 	direction = Vector2(direction_x, direction_y).normalized()
 	
 	#signal abriuPc
-	#@onready var Comp = $"../Computador"
-	if Input.is_action_just_pressed("teclaE") and Ray.get_collider() == Comp:
-		emit_signal("abriuPc")
-	print(Ray.get_collider())
+	#Comp = $"../Computador"
+	#if Input.is_action_just_pressed("teclaE") and Ray.get_collider() == Comp:
+		#emit_signal("abriuPc")
+	#print(Ray.get_collider())
 	
 	
 	#---------------------ANIMAÇÃO_E_ATAQUE-----------------------------------
