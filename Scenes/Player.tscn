@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://b5qjgk6x5tlbn"]
+[gd_scene load_steps=62 format=3 uid="uid://b5qjgk6x5tlbn"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_yi26w"]
 [ext_resource type="Texture2D" uid="uid://cp6ttrw5p1515" path="res://Assets/People/_down idle.png" id="2_hooho"]
@@ -7,9 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://o2ny2ew5cct7" path="res://Assets/People/_down walk.png" id="5_ba2da"]
 [ext_resource type="Texture2D" uid="uid://daae30q08yts5" path="res://Assets/People/_side walk.png" id="6_1heqy"]
 [ext_resource type="Texture2D" uid="uid://cm4fwdm7ew02i" path="res://Assets/People/_up walk.png" id="7_4c2yj"]
+[ext_resource type="PackedScene" uid="uid://d2iblpjrniiwo" path="res://pickinprogress.tscn" id="8_kjy5m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gp0jp"]
-size = Vector2(10, 21)
+size = Vector2(10, 19)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oxbr6"]
 atlas = ExtResource("2_hooho")
@@ -430,7 +431,7 @@ position = Vector2(0, -31)
 zoom = Vector2(2.5, 2.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -26.5)
+position = Vector2(0, -27.5)
 shape = SubResource("RectangleShape2D_gp0jp")
 debug_color = Color(0.991673, 0.430164, 0.667394, 0.42)
 
@@ -439,6 +440,13 @@ position = Vector2(0, -34)
 sprite_frames = SubResource("SpriteFrames_uyqnx")
 animation = &"Idle_Down"
 autoplay = "Idle_Sides"
+
+[node name="PickProgress" parent="." instance=ExtResource("8_kjy5m")]
+offset_left = -15.0
+offset_top = -76.0
+offset_right = -15.0
+offset_bottom = -76.0
+scale = Vector2(0.0588877, 0.0588877)
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
