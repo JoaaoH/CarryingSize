@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+
 @onready var caixa = $"../Caixa"
 @onready var caixacol = $CollisionPolygon2D
 @onready var Ray = $RayCast2D
@@ -52,6 +53,13 @@ func _physics_process(delta):
 		speed = walking_speed
 	
 	direction = Vector2(direction_x, direction_y).normalized()
+	
+	#signal abriuPc
+	#@onready var Comp = $"../Computador"
+	if Input.is_action_just_pressed("teclaE") and Ray.get_collider() == Comp:
+		emit_signal("abriuPc")
+	print(Ray.get_collider())
+	
 	
 	#---------------------ANIMAÇÃO_E_ATAQUE-----------------------------------
 		

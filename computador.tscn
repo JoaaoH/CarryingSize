@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://d3ot8wqkbqiak"]
+
+[node name="compNode" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 57.0
+offset_top = 89.0
+offset_right = 57.0
+offset_bottom = 89.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 999.0
+offset_bottom = 382.0
