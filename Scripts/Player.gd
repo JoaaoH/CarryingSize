@@ -1,9 +1,5 @@
 extends CharacterBody2D
 
-signal isMidUp
-signal isMidDown
-@onready var mapMidUp = $"../TileMapa".get_layer_name(4)
-@onready var mapMidDown = $"../TileMapa".get_layer_name(4)
 @onready var relative_offset: Vector2
 @onready var caixa = $"../Caixa"
 @onready var caixacol = $CollisionPolygon2D
@@ -22,7 +18,8 @@ var lastver = 0
 
 #signal animation_finished
 
-#func _ready():
+func _ready():
+	pass
 	#$Button.connect("pressed",	Callable(self, "_on_Button_pressed"))
 
 func _process(delta):
@@ -37,6 +34,7 @@ func _physics_process(delta):
 	#---------------------MOVIMENTO-------------------------------------------
 	var direction_x = Input.get_axis("left", "right")
 	var direction_y = Input.get_axis("up","down")
+	var acao = Input.is_action_just_pressed("teclaf")
 	
 	if Input.is_action_pressed("sprint") and !attacked:
 		speed = running_speed
@@ -63,7 +61,7 @@ func _physics_process(delta):
 	elif direction.y == -1:
 		sprite.animation = "Walk_Up"
 		lastver = -1
-
+	
 	
 	#if Input.is_action_just_pressed("mouse1") and !attacked:
 		#if direction.x == 0 and direction.y == 0:
@@ -75,53 +73,50 @@ func _physics_process(delta):
 				#sprite.play("Attacking_Up")
 				#attacked = true
 				#cima = null
-				
 			#elif sprite.flip_h or !sprite.flip_h:
 				#sprite.play("Attacking_Sides")
 				#attacked = true
 		#print("Iniciando animação de ataque")
-	#---------------------PEGAR_ITEMS----------------------------------------
+	
+	#---------------------PEGAR_ITEMS-----------------------------------------
 	
 	if direction.x != 0:
 		Ray.rotation_degrees = 0 if direction.x > 0 else 180
 	elif direction.y != 0:	
 		Ray.rotation_degrees = 90 if direction.y > 0 else 270
 		
-	if Carrying == true and Input.is_action_just_pressed("teclaf"):
+	if Carrying == true and acao:
 		caixa.visible = true
 		player_rotation = self.rotation
 		offset = relative_offset.rotated(player_rotation)
 		caixa.position = self.position + offset
 		Carrying = false
-	if Ray.get_collider() == caixa and Input.is_action_just_pressed("teclaf"):
+	if Ray.get_collider() == caixa and acao:
 		caixa.visible = false
 		caixa.position = Vector2(10000,10000)
 		Carrying = true
 		add_child(caixa)
-
-
+	
+	
 	#---------------------VIRAR_SPRITE----------------------------------------
 	if direction.x>0:
 		sprite.flip_h = true
 	elif direction.x<0:
 		sprite.flip_h = false
-
+	
+	#---------------------CORRER----------------------------------------------
 	if direction.x:
 		velocity.x = direction.x * speed
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
-
+	
 	if direction.y:
 		velocity.y = direction.y * speed
 	else:
 		velocity.y = move_toward(velocity.y, 0, speed)
 	
-	#---------------------ARRUMAR_A_PORRA_DO_TILEMAP--------------------------
-
-
+	
 	move_and_slide()
-
-
 
 
 #func _on_animation_finished():
@@ -132,4 +127,3 @@ func _physics_process(delta):
 #func _on_sprite_animation_finished():
 	#print("Animação do sprite finalizada")
 	#emit_signal("animation_finished") 
-	
