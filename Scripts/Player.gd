@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
-
+signal abriuPc
+@onready var Comp = $"../Computador"
 @onready var caixa = $"../Caixa"
 @onready var caixacol = $CollisionPolygon2D
 @onready var Ray = $RayCast2D
@@ -54,8 +55,7 @@ func _physics_process(delta):
 	
 	direction = Vector2(direction_x, direction_y).normalized()
 	
-	#signal abriuPc
-	#@onready var Comp = $"../Computador"
+	
 	if Input.is_action_just_pressed("teclaE") and Ray.get_collider() == Comp:
 		emit_signal("abriuPc")
 	print(Ray.get_collider())
@@ -152,5 +152,3 @@ func _on_Timer_timeout():
 	caixa.position = Vector2(10000, 10000)
 	Carrying = true
 	
-
-
