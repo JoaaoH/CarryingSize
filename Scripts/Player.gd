@@ -144,5 +144,3 @@ func _on_Timer_timeout():
 	caixa.position = Vector2(10000, 10000)
 	Carrying = true
 	
-
-

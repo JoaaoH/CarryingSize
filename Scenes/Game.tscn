@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://51hn4oye1r63"]
+[gd_scene load_steps=24 format=3 uid="uid://51hn4oye1r63"]
 
 [ext_resource type="Texture2D" uid="uid://cadufcmh1rak0" path="res://Assets/Terrain/tileset x1.png" id="1_nyurr"]
 [ext_resource type="PackedScene" uid="uid://b5qjgk6x5tlbn" path="res://Scenes/Player.tscn" id="3_1e41n"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bxfuvuhogvb80" path="res://Scenes/computador.tscn" id="5_7v072"]
 [ext_resource type="Texture2D" uid="uid://dqcsrag74lt8j" path="res://Assets/Sprout Lands - Sprites - Basic pack/Tilesets/Hills.png" id="5_8m1kn"]
 [ext_resource type="PackedScene" uid="uid://bvduf8mvjoqfx" path="res://Scenes/caixa.tscn" id="11_aiuk6"]
+[ext_resource type="Texture2D" uid="uid://b5sv2tk13jqe7" path="res://Assets/Terrain/light.png" id="11_tp3eh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2ndar"]
 texture = ExtResource("1_nyurr")
@@ -3495,6 +3496,9 @@ sources/6 = SubResource("TileSetAtlasSource_cqvre")
 sources/7 = SubResource("TileSetAtlasSource_k6g1r")
 sources/8 = SubResource("TileSetAtlasSource_tumo4")
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_svnjw"]
+polygon = PackedVector2Array(-3, -18, 0, -18, 0, -23, 1, -23)
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d5bri"]
 texture = ExtResource("3_3k047")
 0:0/0 = 0
@@ -3847,6 +3851,9 @@ layer_4/z_index = 4
 layer_4/tile_data = PackedInt32Array(131073, 131073, 18, 196609, 131073, 19, 131074, 196609, 18, 196610, 196609, 19, 131075, 655361, 20, 196611, 655361, 21, 131076, 720897, 20, 196612, 720897, 21, 131077, 655361, 20, 196613, 655361, 21, 131078, 720897, 20, 196614, 720897, 21, 131079, 655361, 20, 196615, 655361, 21, 131080, 720897, 20, 196616, 720897, 21, 131085, 655361, 20, 196621, 655361, 21, 131086, 720897, 20, 196622, 720897, 21, 131087, 655361, 20, 196623, 655361, 21, 131088, 720897, 20, 196624, 720897, 21, 131089, 655361, 20, 196625, 655361, 21, 131090, 720897, 20, 196626, 720897, 21, 131091, 1179649, 18, 196627, 1179649, 19, 131092, 1245185, 18, 196628, 1245185, 19)
 layer_5/tile_data = PackedInt32Array()
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="TileMapa"]
+occluder = SubResource("OccluderPolygon2D_svnjw")
+
 [node name="Road" type="TileMap" parent="."]
 position = Vector2(-35, -73)
 scale = Vector2(-2.73842, 3.17372)
@@ -3877,3 +3884,10 @@ position = Vector2(260, -190)
 [node name="Caixa" parent="." instance=ExtResource("11_aiuk6")]
 z_index = 2
 position = Vector2(189, -105)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(140.168, -133.5)
+scale = Vector2(3.04337, 1.83)
+color = Color(0.876134, 0.875957, 1.15514e-06, 1)
+energy = 0.43
+texture = ExtResource("11_tp3eh")
