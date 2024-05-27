@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvduf8mvjoqfx"]
+
+[ext_resource type="Texture2D" uid="uid://dt5x7clpv04fa" path="res://Assets/Objects/BoxSprite.png" id="1_cne50"]
+
+[node name="Caixa" type="StaticBody2D"]
+z_index = 3
+scale = Vector2(0.25, 0.25)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_cne50")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(4.88363, 43.2496)
+scale = Vector2(1.01091, 3.17729)
+polygon = PackedVector2Array(-23.6259, -23.0541, -8.78776, -26.2014, 34.7374, -26.2014, 34.7374, -13.9268, 17.9209, -5.42903, -31.5396, -5.42903, -31.5396, -21.1657)

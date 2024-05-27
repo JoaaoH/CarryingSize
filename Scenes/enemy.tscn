@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=3 uid="uid://c7w21g4y2uwcw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ayqx"]
+size = Vector2(78, 72)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dm3ne"]
+load_path = "res://.godot/imported/TNT_Blue.png-3629cd97215a62a60a9a30530c54db1e.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3n1pe"]
+atlas = SubResource("CompressedTexture2D_dm3ne")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qs2yd"]
+atlas = SubResource("CompressedTexture2D_dm3ne")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nggp7"]
+atlas = SubResource("CompressedTexture2D_dm3ne")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cldsj"]
+atlas = SubResource("CompressedTexture2D_dm3ne")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jowt4"]
+atlas = SubResource("CompressedTexture2D_dm3ne")
+region = Rect2(768, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmghu"]
+atlas = SubResource("CompressedTexture2D_dm3ne")
+region = Rect2(960, 0, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d0uhv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3n1pe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qs2yd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nggp7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cldsj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jowt4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wmghu")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 12.0
+}]
+
+[node name="Enemy" type="CharacterBody2D"]
+z_index = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -36)
+shape = SubResource("RectangleShape2D_4ayqx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-3, -36)
+sprite_frames = SubResource("SpriteFrames_d0uhv")
+animation = &"Idle"
+autoplay = "Idle"

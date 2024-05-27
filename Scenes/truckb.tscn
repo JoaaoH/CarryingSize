@@ -1,0 +1,112 @@
+[gd_scene load_steps=16 format=3 uid="uid://cxp1n37yphha8"]
+
+[ext_resource type="Texture2D" uid="uid://utb2wcgfkp2h" path="res://Assets/Vehicles/EAST/Blue_BOXTRUCK_CLEAN_EAST_000-sheet.png" id="1_sl6p2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_do1ow"]
+size = Vector2(103, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g78dg"]
+atlas = ExtResource("1_sl6p2")
+region = Rect2(0, 0, 140, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_adkr3"]
+atlas = ExtResource("1_sl6p2")
+region = Rect2(140, 0, 140, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d83f2"]
+atlas = ExtResource("1_sl6p2")
+region = Rect2(280, 0, 140, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kkw3j"]
+atlas = ExtResource("1_sl6p2")
+region = Rect2(420, 0, 140, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hrmw8"]
+atlas = ExtResource("1_sl6p2")
+region = Rect2(0, 140, 140, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x24yn"]
+atlas = ExtResource("1_sl6p2")
+region = Rect2(140, 140, 140, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4wmv1"]
+atlas = ExtResource("1_sl6p2")
+region = Rect2(280, 140, 140, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7ejb"]
+atlas = ExtResource("1_sl6p2")
+region = Rect2(420, 140, 140, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1s02"]
+atlas = ExtResource("1_sl6p2")
+region = Rect2(0, 280, 140, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28alf"]
+atlas = ExtResource("1_sl6p2")
+region = Rect2(140, 280, 140, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qcfsl"]
+atlas = ExtResource("1_sl6p2")
+region = Rect2(280, 280, 140, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gn6l1"]
+atlas = ExtResource("1_sl6p2")
+region = Rect2(420, 280, 140, 140)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pr8oa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g78dg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_adkr3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d83f2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kkw3j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hrmw8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x24yn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4wmv1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f7ejb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d1s02")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_28alf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qcfsl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gn6l1")
+}],
+"loop": true,
+"name": &"Moving_East",
+"speed": 12.0
+}]
+
+[node name="Caminhão" type="StaticBody2D"]
+scale = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -3)
+shape = SubResource("RectangleShape2D_do1ow")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_pr8oa")
+animation = &"Moving_East"
+autoplay = "Moving_East"
+frame = 11
+frame_progress = 1.0
