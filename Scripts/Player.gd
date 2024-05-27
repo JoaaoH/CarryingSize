@@ -117,9 +117,6 @@ func _physics_process(delta):
 		velocity.y = move_toward(velocity.y, 0, speed)
 	
 	#---------------------ARRUMAR_A_PORRA_DO_TILEMAP--------------------------
-	if get_collision_mask_value(4):
-		print("MIDUP")
-		emit_signal("mapMidUp")
 
 
 	move_and_slide()

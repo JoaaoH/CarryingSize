@@ -1,9 +1,9 @@
 [gd_scene load_steps=23 format=3 uid="uid://51hn4oye1r63"]
 
-[ext_resource type="Texture2D" uid="uid://cadufcmh1rak0" path="res://Assets/OSBGL/tileset x1.png" id="1_nyurr"]
+[ext_resource type="Texture2D" uid="uid://cadufcmh1rak0" path="res://Assets/Terrain/tileset x1.png" id="1_nyurr"]
 [ext_resource type="PackedScene" uid="uid://b5qjgk6x5tlbn" path="res://Scenes/Player.tscn" id="3_1e41n"]
 [ext_resource type="Texture2D" uid="uid://daqgpn4yas62t" path="res://Assets/Sprout Lands - Sprites - Basic pack/Objects/Basic_Grass_Biom_things.png" id="3_1nyd2"]
-[ext_resource type="Texture2D" uid="uid://cxopvygqym42n" path="res://Assets/OSBGL/roads2W.png" id="3_3k047"]
+[ext_resource type="Texture2D" uid="uid://cxopvygqym42n" path="res://Assets/roads2W.png" id="3_3k047"]
 [ext_resource type="Texture2D" uid="uid://caspnbfk8xree" path="res://Assets/Sprout Lands - Sprites - Basic pack/Objects/Basic_Furniture.png" id="3_k00fh"]
 [ext_resource type="PackedScene" uid="uid://cxp1n37yphha8" path="res://Scenes/truckb.tscn" id="4_ax12q"]
 [ext_resource type="Texture2D" uid="uid://cw1oux78f5ixh" path="res://Assets/Sprout Lands - Sprites - Basic pack/Tilesets/Grass.png" id="4_x7l8f"]
