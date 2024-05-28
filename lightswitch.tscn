@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnxb7lrwp64ni"]
+
+[ext_resource type="Texture2D" uid="uid://qtrucbhmkpxi" path="res://Assets/Objects/lightsocket.png" id="1_p1l2s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s3aqk"]
+
+[node name="Lightswitch" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_p1l2s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4, -30)
+shape = SubResource("RectangleShape2D_s3aqk")

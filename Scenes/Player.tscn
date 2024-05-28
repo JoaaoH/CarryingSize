@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://d2iblpjrniiwo" path="res://pickinprogress.tscn" id="8_gncsj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gp0jp"]
-size = Vector2(10, 19)
+size = Vector2(10, 21)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oxbr6"]
 atlas = ExtResource("2_hooho")
@@ -431,7 +431,7 @@ position = Vector2(0, -31)
 zoom = Vector2(2.5, 2.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -27.5)
+position = Vector2(0, -26.5)
 shape = SubResource("RectangleShape2D_gp0jp")
 debug_color = Color(0.991673, 0.430164, 0.667394, 0.42)
 
